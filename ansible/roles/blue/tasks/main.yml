@@ -1,0 +1,19 @@
+- name: run blue docker container
+  docker_compose:
+    project_name: "blue"
+    definition:
+      version: "3"
+      services:
+        blue:
+          image: "{{ blue_image }}"
+          volumes:
+          - "{{ blue_dir }}:{{ blue_dir }}"
+          deploy:
+            replicas: "{{ blue_replicas }}"
+          ports:
+          - "8080:80"
+
+- name: copy blue index.html
+  copy:
+    src: "{{ blue_index }}"
+    dest: "{{ blue_dir }}/index.html"

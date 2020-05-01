@@ -1,0 +1,3 @@
+terraform/creds/*
+terraform/.terraform/*
+terraform/terraform.bin

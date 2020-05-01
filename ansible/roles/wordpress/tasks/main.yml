@@ -1,0 +1,27 @@
+- name: run wordpress docker container
+  docker_compose:
+    project_name: "wordpress"
+    definition:
+      version: "2"
+      services:
+        db:
+          image: "{{ wordpress_db_image }}"
+          volumes:
+          - "{{ wordpress_db_dir }}:{{ wordpress_db_dir }}"
+          environment:
+            MYSQL_ROOT_PASSWORD: "{{ wordpress_mysql_root_password }}"
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: "{{ wordpress_mysql_password }}"
+          command: '--default-authentication-plugin=mysql_native_password'
+        wordpress:
+          depends_on:
+          - db
+          ports:
+          - "80:80"
+          environment:
+            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: "{{ wordpress_mysql_password }}"
+            PHP_VERSION: "7.4.1"
+          image: "{{ wordpress_image }}"

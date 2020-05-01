@@ -1,0 +1,20 @@
+- name: add docker repo gpg key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: add docker apt repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian "{{ ansible_distribution_release }}" stable
+    state: present
+
+- name: install docker packages
+  apt:
+    name: "{{ docker_packages }}"
+    state: present
+    update_cache: yes
+
+- name: install docker python modules
+  pip:
+    name: "{{ docker_pip_modules }}"
+    executable: pip3

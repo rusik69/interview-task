@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+DIR="$(cd "$(dirname "$0")" && pwd)"
+TERRAFORM_VERSION=0.12.24
+TERRAFORM_IMAGE=hashicorp/terraform:${TERRAFORM_VERSION}
+TERRAFORM="docker run -v ${DIR}:/v -w /v -it ${TERRAFORM_IMAGE}"
+
+eval ${TERRAFORM} $@

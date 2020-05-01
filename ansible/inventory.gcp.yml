@@ -1,0 +1,5 @@
+plugin: gcp_compute
+projects:
+  - oracle-interview-task
+auth_kind: serviceaccount
+service_account_file: ../terraform/creds/serviceaccount.json
