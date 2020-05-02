@@ -2,3 +2,11 @@ blue_image: "nginx:1.18.0-alpine"
 blue_dir: "/etc/nginx/html"
 blue_index: "index-blue.html"
 blue_replicas: "1"
+blue_ports:
+- "8080:80"
+blue_prometheus_image: "prom/prometheus:v2.17.2"
+blue_prometheus_ports:
+- "9090:9090"
+blue_prometheus_config: "/etc/prometheus/prometheus.yml"
+blue_prometheus_config_dir: "/etc/prometheus"
+blue_cadvisor_image: "google/cadvisor"

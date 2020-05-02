@@ -1,3 +1,9 @@
+
+- name: copy blue index.html
+  copy:
+    src: "{{ blue_index }}"
+    dest: "{{ blue_dir }}/index.html"
+
 - name: run blue docker container
   docker_compose:
     project_name: "blue"
@@ -10,10 +16,21 @@
           - "{{ blue_dir }}:{{ blue_dir }}"
           deploy:
             replicas: "{{ blue_replicas }}"
-          ports:
-          - "8080:80"
+          ports: "{{ blue_ports }}"
+        prometheus:
+          image: "{{ blue_prometheus_image }}"
+          ports: "{{ blue_prometheus_ports }}"
+          command:
+          - --config.file={{ blue_prometheus_config }}
+          volumes:
+          - "{{ blue_prometheus_config_dir }}:{{ blue_prometheus_config_dir }}:ro"
+          depends_on:
+          - blue
 
-- name: copy blue index.html
-  copy:
-    src: "{{ blue_index }}"
-    dest: "{{ blue_dir }}/index.html"
+- name: copy prometheus config template
+  template:
+    src: "prometheus.yml"
+    dest: "{{ blue_prometheus_config }}"
+
+          
+

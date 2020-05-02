@@ -5,7 +5,7 @@ variable "name" {
 
 variable "machine_type" {
   type = string
-  default = "e2-micro"
+  default = "e2-small"
 }
 
 variable "zone" {
@@ -30,11 +30,15 @@ variable "network_tier" {
 
 variable "ssh_pub_key_file" {
   type = string
-  default = "~/.ssh/id_rsa.pub"
+  default = "./creds/id_rsa.pub"
 }
 
 variable "ssh_user" {
   type = string
   default = "oracle"
-}
+} 
 
+variable "ports" {
+  type = list
+  default = ["80", "8080", "9090"]
+}

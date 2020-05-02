@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -xe
 cd terraform
-terraform init
-terraform apply -auto-approve
+./terraform init
+./terraform apply -auto-approve
 cd ../ansible
 ansible-playbook -i inventory.gcp.yml ./wordpress.yml --vault-pass ./vault_pass  -e 'ansible_python_interpreter=/usr/bin/python3'
 ansible-playbook -i inventory.gcp.yml ./blue.yml -e 'ansible_python_interpreter=/usr/bin/python3'

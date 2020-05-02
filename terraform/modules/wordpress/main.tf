@@ -22,8 +22,25 @@ resource "google_compute_instance" "wordpress" {
   metadata = {
     ssh-keys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
   }
+  tags = ["wordpress"]
+  allow_stopping_for_update = true
 }
 
 output "instance_ip_addr" {
   value = google_compute_address.wordpress.address
+}
+
+resource "google_compute_firewall" "wordpress" {
+  name    = "default"
+  network = "default"
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = var.ports
+  }
+  target_tags = ["wordpress"]
 }

@@ -1,2 +1,3 @@
 terraform/creds/*
 terraform/.terraform/*
+ansible/vault_pass
