@@ -1,7 +1,7 @@
 before_script:
   - cd terraform
   - mkdir creds
-  - echo $SERVICEACCOUNT
+  - echo $SERVICEACCOUNT 
 
 stages:
   - terraform
