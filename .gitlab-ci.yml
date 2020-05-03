@@ -1,7 +1,7 @@
 before_script:
   - cd terraform
   - mkdir creds
-  - echo $SERVICEACCOUNT | base64 -d > ./creds/serviceaccount.json
+  - echo $SERVICEACCOUNT
 
 stages:
   - terraform
