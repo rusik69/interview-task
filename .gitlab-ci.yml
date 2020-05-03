@@ -9,7 +9,7 @@ stages:
 terraform:
   tags:
     - docker
-  state: terraform
+  stage: terraform
   script:
     - ./terraform init
     - ./terraform apply
