@@ -14,5 +14,5 @@ terraform:
       - docker:dind
   image: docker
   script:
-    - ./terraform init
-    - ./terraform apply
+    - bash ./terraform init
+    - bash  ./terraform apply
