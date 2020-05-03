@@ -1,9 +1,4 @@
 
-- name: copy blue index.html
-  copy:
-    src: "{{ blue_index }}"
-    dest: "{{ blue_dir }}/index.html"
-
 - name: run blue docker container
   docker_compose:
     project_name: "blue"
@@ -32,5 +27,8 @@
     src: "prometheus.yml"
     dest: "{{ blue_prometheus_config }}"
 
-          
+- name: copy blue index.html
+  copy:
+    src: "{{ blue_index }}"
+    dest: "{{ blue_dir }}/index.html"          
 

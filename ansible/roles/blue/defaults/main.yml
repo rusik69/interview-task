@@ -1,5 +1,5 @@
 blue_image: "nginx:1.18.0-alpine"
-blue_dir: "/etc/nginx/html"
+blue_dir: "/usr/share/nginx/html"
 blue_index: "index-blue.html"
 blue_replicas: "1"
 blue_ports:
