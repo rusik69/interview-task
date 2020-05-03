@@ -10,6 +10,9 @@ terraform:
   tags:
     - docker
   stage: terraform
+  services: 
+      - docker:dind
+  image: docker
   script:
     - ./terraform init
     - ./terraform apply
