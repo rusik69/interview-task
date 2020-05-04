@@ -2,6 +2,6 @@
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 ANSIBLE_IMAGE=williamyeh/ansible
-ANSIBLE="docker run -e ${ANSIBLE_ENV} -v ${DIR}:/v -w /v  ${ANSIBLE_IMAGE}"
+ANSIBLE="docker run -v ${DIR}:/v -w /v  ${ANSIBLE_IMAGE}"
 
 eval ${ANSIBLE} $@
