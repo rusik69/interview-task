@@ -3,7 +3,7 @@ set -xe
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 ANSIBLE_IMAGE=loqutus/ansible
-ANSIBLE_IMAGE_TAG=latest
+ANSIBLE_IMAGE_TAG=2.9.7
 ANSIBLE_ENV="GOOGLE_APPLICATION_CREDENTIALS=./creds/serviceaccount.json"
 ANSIBLE_CONFIG="ANSIBLE_CONFIG=./ansible.cfg"
 ANSIBLE="docker run -e ${ANSIBLE_ENV} -e ${ANSIBLE_CONFIG} -v ${DIR}:/v -w /v  ${ANSIBLE_IMAGE}:${ANSIBLE_IMAGE_TAG} ansible-playbook"
