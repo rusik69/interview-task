@@ -4,6 +4,6 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 TERRAFORM_VERSION=0.12.24
 TERRAFORM_IMAGE=hashicorp/terraform:${TERRAFORM_VERSION}
 TERRAFORM_ENV="GOOGLE_APPLICATION_CREDENTIALS=./creds/serviceaccount.json"
-TERRAFORM="docker run -e ${TERRAFORM_ENV} -v ${DIR}:/v -w /v -it ${TERRAFORM_IMAGE}"
+TERRAFORM="docker run -e ${TERRAFORM_ENV} -v ${DIR}:/v -w /v ${TERRAFORM_IMAGE}"
 
 eval ${TERRAFORM} $@
