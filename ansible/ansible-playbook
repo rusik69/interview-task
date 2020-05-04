@@ -5,6 +5,7 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 ANSIBLE_IMAGE=loqutus/ansible
 ANSIBLE_IMAGE_TAG=latest
 ANSIBLE_ENV="GOOGLE_APPLICATION_CREDENTIALS=./creds/serviceaccount.json"
-ANSIBLE="docker run -e ${ANSIBLE_ENV} -v ${DIR}:/v -w /v  ${ANSIBLE_IMAGE}:${ANSIBLE_IMAGE_TAG} ansible-playbook"
+ANSIBLE_CONFIG="ANSIBLE_CONFIG=./ansible.cfg"
+ANSIBLE="docker run -e ${ANSIBLE_ENV} -e ${ANSIBLE_CONFIG} -v ${DIR}:/v -w /v  ${ANSIBLE_IMAGE}:${ANSIBLE_IMAGE_TAG} ansible-playbook"
 
 eval ${ANSIBLE} $@
