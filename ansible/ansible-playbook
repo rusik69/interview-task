@@ -1,4 +1,5 @@
 #!/bin/sh
+set -xe
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 ANSIBLE_IMAGE=williamyeh/ansible
