@@ -1,20 +1,19 @@
 before_script:
-  - cd terraform
-  - mkdir creds
-  - echo $SERVICEACCOUNT | base64 -d > ./creds/serviceaccount.json
-  - echo $SSH_KEY_PUB | base64 -d > ./creds/id_rsa.pub
-  - echo $SSH_KEY | base64 -d > ./creds/id_rsa
+  - mkdir terraform/creds
+  - echo $SERVICEACCOUNT | base64 -d > terraform/creds/serviceaccount.json
+  - echo $SSH_KEY_PUB | base64 -d > terraform/creds/id_rsa.pub
+  - echo $SSH_KEY | base64 -d > terraform/creds/id_rsa
+  - echo $VAULT_PASS | base64 -d > ansible/vault_pass
 
 stages:
-  - terraform
+  - run
 
-terraform:
+run:
   tags:
     - docker
-  stage: terraform
+  stage: run
   services: 
       - docker:dind
   image: docker
   script:
-    - ./terraform init
-    - ./terraform apply -auto-approve
+    - ./run.sh
