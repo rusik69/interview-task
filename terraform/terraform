@@ -1,4 +1,4 @@
-#!bash
+#!/bin/sh
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 TERRAFORM_VERSION=0.12.24
