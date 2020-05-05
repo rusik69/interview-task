@@ -6,6 +6,6 @@ ANSIBLE_IMAGE=loqutus/ansible
 ANSIBLE_IMAGE_TAG=2.9.7
 ANSIBLE_ENV="GOOGLE_APPLICATION_CREDENTIALS=./creds/serviceaccount.json"
 ANSIBLE_CONFIG="ANSIBLE_CONFIG=./ansible.cfg"
-ANSIBLE="docker run -e ${ANSIBLE_ENV} -e ${ANSIBLE_CONFIG} -v ${DIR}:/v -w /v  ${ANSIBLE_IMAGE}:${ANSIBLE_IMAGE_TAG} ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3.6'"
+ANSIBLE="docker run -e ${ANSIBLE_ENV} -e ${ANSIBLE_CONFIG} -v ${DIR}:/v -w /v  ${ANSIBLE_IMAGE}:${ANSIBLE_IMAGE_TAG} ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3.7'"
 
 eval ${ANSIBLE} $@
