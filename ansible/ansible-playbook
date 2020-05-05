@@ -7,6 +7,6 @@ ANSIBLE_IMAGE_TAG=2.9.7
 ANSIBLE_ENV="GOOGLE_APPLICATION_CREDENTIALS=./creds/serviceaccount.json"
 ANSIBLE_CONFIG="ANSIBLE_CONFIG=./ansible.cfg"
 ANSIBLE_PYTHON="ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3.6"
-ANSIBLE="docker run -e ${ANSIBLE_ENV} -e ${ANSIBLE_CONFIG} -v ${DIR}:/v -w /v  ${ANSIBLE_IMAGE}:${ANSIBLE_IMAGE_TAG} ansible-playbook"
+ANSIBLE="docker run -e ${ANSIBLE_ENV} -e ${ANSIBLE_CONFIG} -e ${ANSIBLE_PYTHON} -v ${DIR}:/v -w /v  ${ANSIBLE_IMAGE}:${ANSIBLE_IMAGE_TAG} ansible-playbook"
 
 eval ${ANSIBLE} $@
